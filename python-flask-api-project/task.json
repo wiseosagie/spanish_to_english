@@ -4,7 +4,7 @@
     "executionRoleArn": "arn:aws:iam::381491911327:role/ecsTaskExecutionRole",
     "containerDefinitions": [
         {
-            "name": "video-translator",
+            "name": "testcontainer",
             "image": "381491911327.dkr.ecr.us-east-1.amazonaws.com/video-translator:latest",
             "cpu": 256,
             "memory": 512,
@@ -30,7 +30,9 @@
             ]
         }
     ],
-    "requiresCompatibilities": ["FARGATE"],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
     "cpu": "512",
     "memory": "1024",
     "tags": [

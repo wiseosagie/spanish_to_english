@@ -13,9 +13,6 @@ COPY requirements.txt ./
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Remove build dependencies to reduce image size
-RUN apk del gcc musl-dev python3-dev libffi-dev openssl-dev cargo
-
 # Copy the rest of the application
 COPY . .
 
