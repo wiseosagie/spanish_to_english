@@ -1,0 +1,42 @@
+{
+    "family": "video-translator",
+    "networkMode": "awsvpc",
+    "executionRoleArn": "arn:aws:iam::381491911327:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+        {
+            "name": "video-translator",
+            "image": "381491911327.dkr.ecr.us-east-1.amazonaws.com/video-translator:latest",
+            "cpu": 256,
+            "memory": 512,
+            "essential": true,
+            "portMappings": [
+                {
+                    "containerPort": 9001,
+                    "hostPort": 9001,
+                    "protocol": "tcp"
+                }
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/video-translator",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            },
+            "command": [
+                "python3",
+                "main.py"
+            ]
+        }
+    ],
+    "requiresCompatibilities": ["FARGATE"],
+    "cpu": "512",
+    "memory": "1024",
+    "tags": [
+        {
+            "key": "Name",
+            "value": "video-translator"
+        }
+    ]
+}
